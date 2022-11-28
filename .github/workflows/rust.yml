@@ -20,9 +20,8 @@ jobs:
       run: cargo build --verbose
     - name: Run tests
       run: cargo test --verbose
-    - name: Run Code Coverage
-      run: cargo tarpaulin --ignore-tests
-    - name: Run Linter
-      run: cargo clippy -- -D warnings
-    - name: Run Security Audit
-      run: cargo audit
+    - name: Run cargo-tarpaulin
+        uses: actions-rs/tarpaulin@v0.1
+        with:
+          version: '0.15.0'
+          args: '-- --test-threads 1'
